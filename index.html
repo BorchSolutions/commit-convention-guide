@@ -14,7 +14,7 @@
     <meta property="og:url" content="https://[tu-usuario].github.io/commit-guidelines/">
     <link rel="canonical" href="https://[tu-usuario].github.io/commit-guidelines/">
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4B8M53ZBYE"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -22,7 +22,7 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-        gtag('config', 'G-4B8M53ZBYE');
+        gtag('config', 'G-XXXXXXXXXX');
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prismjs/1.29.0/prism.min.js"></script>
@@ -86,11 +86,31 @@ fix(inventory): corregir alineación de elementos en móviles</code></pre>
             <section class="bg-white rounded-lg shadow-md p-6">
                 <h2 class="text-2xl font-semibold text-gray-800 mb-4">2. Estructura del Mensaje</h2>
                 <div class="bg-gray-100 p-4 rounded-lg mb-4">
-                    <pre class="text-sm"><code>&lt;tipo&gt;(&lt;alcance&gt;): &lt;descripción&gt;
+                    <pre class="text-sm"><code>tipo(alcance): descripción
 
 [cuerpo opcional]
 
 [nota de pie opcional]</code></pre>
+                </div>
+
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 my-4">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Reglas de Formato</h3>
+                    <ul class="list-disc ml-6 text-gray-700">
+                        <li>Use "/" para indicar jerarquías en el alcance (ej: <code>puntoventa/pago</code>)</li>
+                        <li>No use guiones (-) en el alcance</li>
+                        <li>No deje espacios entre el tipo y los paréntesis del alcance</li>
+                        <li>Use minúsculas para el tipo y alcance</li>
+                        <li>La descripción debe comenzar con mayúscula</li>
+                        <li>Use siempre <code>feat</code> (no <code>feature</code>) para nuevas características</li>
+                    </ul>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-4">
+                    <h3 class="font-semibold text-blue-800 mb-2">Nota Importante sobre Tipos de Commit</h3>
+                    <p class="text-gray-700">
+                        Los tipos de commit están estandarizados para mantener la consistencia y permitir la automatización. Por ejemplo, usamos <code>feat</code> en lugar de <code>feature</code>, <code>fix</code> en lugar de
+                        <code>bugfix</code>, etc. Esto facilita la generación automática de changelogs y el mantenimiento del historial de cambios.
+                    </p>
                 </div>
 
                 <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">2.1 Tipos de Commit</h3>
@@ -341,8 +361,8 @@ feat(pos/discount): añadir sistema de descuentos</pre>
             const commitMessage = document.getElementById('commitMessage').value;
             const resultDiv = document.getElementById('validationResult');
 
-            // Expresión regular para validar el formato del commit
-            const commitRegex = /^(feat|fix|docs|style|refactor|test|chore)(\([a-z-]+\))?: .{1,50}$/;
+            // Expresión regular actualizada para validar el formato del commit
+            const commitRegex = /^(feat|fix|docs|style|refactor|test|chore)(\([a-z][a-z0-9/]*\))?: .{1,50}$/;
 
             if (!commitMessage) {
                 showResult('Por favor, ingresa un mensaje de commit.', 'warning');
@@ -354,7 +374,12 @@ feat(pos/discount): añadir sistema de descuentos</pre>
             if (commitRegex.test(firstLine)) {
                 showResult('¡Formato de commit válido! ✅', 'success');
             } else {
-                showResult('El formato del commit no cumple con los lineamientos. Revisa la estructura requerida.', 'error');
+                showResult(`El formato del commit no cumple con los lineamientos. 
+                    Estructura requerida: tipo(alcance): descripción
+                    Ejemplo: feat(puntoventa/pago): implementar pago con QR
+                    - Usa "/" para jerarquías en el alcance
+                    - No uses guiones (-) en el alcance
+                    - No dejes espacios entre tipo y paréntesis`, 'error');
             }
         }
 
@@ -367,7 +392,7 @@ feat(pos/discount): añadir sistema de descuentos</pre>
             };
 
             resultDiv.className = `p-4 rounded-lg border ${colors[type]}`;
-            resultDiv.textContent = message;
+            resultDiv.innerHTML = message.replace(/\n/g, '<br>');
         }
     </script>
 </body>
