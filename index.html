@@ -43,6 +43,43 @@
                 <p class="text-gray-700 mb-4">
                     Este documento establece los lineamientos para la creación de commits en nuestros proyectos de desarrollo. Un commit bien estructurado facilita la revisión de código, mejora la trazabilidad y mantiene un historial claro del proyecto.
                 </p>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-4">
+                    <h3 class="font-semibold text-blue-800 mb-2">Principio Fundamental: Commits Atómicos</h3>
+                    <p class="text-gray-700">
+                        Cada commit debe representar un único cambio lógico en el código. No combines múltiples funcionalidades o correcciones no relacionadas en un solo commit. Esta práctica facilita:
+                    </p>
+                    <ul class="list-disc ml-6 mt-2 text-gray-700">
+                        <li>Revisión de código más eficiente</li>
+                        <li>Facilidad para revertir cambios específicos</li>
+                        <li>Mejor trazabilidad del historial</li>
+                        <li>Integración continua más confiable</li>
+                    </ul>
+                </div>
+
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 my-4">
+                    <h3 class="font-semibold text-yellow-800">❌ Lo que NO debes hacer:</h3>
+                    <pre class="text-sm bg-gray-100 p-2 mt-2 rounded"><code>feat: implementar módulo completo de inutilización de guías
+
+- Crear formulario de ingreso
+- Agregar validaciones
+- Implementar proceso de aprobación
+- Crear reportes
+- Actualizar dashboard
+- Corregir bugs de interfaz</code></pre>
+                    <p class="text-gray-700 mt-2">Este commit mezcla múltiples cambios que deberían estar separados.</p>
+                </div>
+
+                <div class="bg-green-50 border-l-4 border-green-500 p-4 my-4">
+                    <h3 class="font-semibold text-green-800">✅ La forma correcta:</h3>
+                    <p class="text-gray-700 mb-2">Dividir en commits atómicos:</p>
+                    <pre class="text-sm bg-gray-100 p-2 rounded"><code>feat(inventory): crear formulario de inutilización de guías
+feat(inventory): implementar validaciones de formulario
+feat(inventory): agregar flujo de aprobación
+feat(inventory): integrar generación de reportes
+feat(inventory): añadir widgets en dashboard
+fix(inventory): corregir alineación de elementos en móviles</code></pre>
+                </div>
             </section>
 
             <!-- Sección 2: Estructura del Mensaje -->
@@ -190,7 +227,39 @@ Ubicación: /docs/inventory/shipment-guides/</code></pre>
             <section class="bg-white rounded-lg shadow-md p-6">
                 <h2 class="text-2xl font-semibold text-gray-800 mb-4">4. Buenas Prácticas</h2>
 
+                <div class="mb-6 bg-indigo-50 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold text-indigo-800 mb-3">Principio de Commits Atómicos</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded shadow">
+                            <h4 class="font-semibold text-red-600 mb-2">❌ Commit No Atómico:</h4>
+                            <p class="text-gray-600 mb-2">Mezclando múltiples cambios:</p>
+                            <pre class="text-sm bg-gray-100 p-2 rounded">feat(pos): actualizar módulo de ventas
+
+- Agregar nuevo diseño responsive
+- Corregir bug en cálculo de impuestos
+- Actualizar librería de UI
+- Añadir nueva funcionalidad de descuentos</pre>
+                        </div>
+                        <div class="bg-white p-4 rounded shadow">
+                            <h4 class="font-semibold text-green-600 mb-2">✅ Commits Atómicos:</h4>
+                            <p class="text-gray-600 mb-2">Separando cada cambio:</p>
+                            <pre class="text-sm bg-gray-100 p-2 rounded">refactor(pos/ui): implementar diseño responsive
+fix(pos/tax): corregir cálculo de impuestos
+chore(deps): actualizar librería de UI a v2.1
+feat(pos/discount): añadir sistema de descuentos</pre>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="space-y-4">
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white">✓</div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Un cambio, un commit</h4>
+                            <p class="text-gray-700">Cada commit debe representar una única modificación lógica. Si necesitas describir tu commit con "y", probablemente debas dividirlo.</p>
+                        </div>
+                    </div>
+
                     <div class="flex items-start space-x-3">
                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white">✓</div>
                         <div>
@@ -222,6 +291,26 @@ Ubicación: /docs/inventory/shipment-guides/</code></pre>
                             <p class="text-gray-700">Incluye "Fixes #123" o "Relates to #456" cuando sea relevante</p>
                         </div>
                     </div>
+
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white">✓</div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Commits frecuentes</h4>
+                            <p class="text-gray-700">Realiza commits pequeños y frecuentes en lugar de grandes commits al final del día</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-yellow-50 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold text-yellow-800 mb-3">¿Cuándo hacer commit?</h3>
+                    <ul class="list-disc ml-6 text-gray-700">
+                        <li>Después de implementar una nueva función</li>
+                        <li>Al terminar una refactorización específica</li>
+                        <li>Cuando corriges un bug</li>
+                        <li>Al completar una mejora en el diseño</li>
+                        <li>Después de actualizar documentación</li>
+                        <li>Cuando terminas de escribir tests</li>
+                    </ul>
                 </div>
             </section>
 
@@ -243,7 +332,7 @@ Ubicación: /docs/inventory/shipment-guides/</code></pre>
         </main>
 
         <footer class="mt-12 text-center text-gray-600">
-            <p>© 2025 BorchSolutions. Todos los derechos reservados.</p>
+            <p>© 2025 Tu Empresa. Todos los derechos reservados.</p>
         </footer>
     </div>
 
