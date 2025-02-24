@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lineamientos para Commits - Guía Profesional</title>
+    <meta name="description" content="Guía profesional y completa para la gestión de commits en proyectos de desarrollo de software. Incluye ejemplos de ERP y sistemas POS.">
+    <meta name="keywords" content="git, commits, desarrollo de software, guía, convenciones, ERP, POS">
+    <meta name="author" content="Tu Empresa">
+    <meta property="og:title" content="Lineamientos para Commits - Guía Profesional">
+    <meta property="og:description" content="Guía completa para la gestión de commits en proyectos de desarrollo de software.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://[tu-usuario].github.io/commit-guidelines/">
+    <link rel="canonical" href="https://[tu-usuario].github.io/commit-guidelines/">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4B8M53ZBYE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-4B8M53ZBYE');
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prismjs/1.29.0/prism.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prismjs/1.29.0/themes/prism.min.css">
+</head>
+
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Lineamientos para Commits</h1>
+            <p class="text-xl text-gray-600">Guía de mejores prácticas para la gestión de commits en nuestros proyectos</p>
+        </header>
+
+        <main class="space-y-8">
+            <!-- Sección 1: Introducción -->
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">1. Introducción</h2>
+                <p class="text-gray-700 mb-4">
+                    Este documento establece los lineamientos para la creación de commits en nuestros proyectos de desarrollo. Un commit bien estructurado facilita la revisión de código, mejora la trazabilidad y mantiene un historial claro del proyecto.
+                </p>
+            </section>
+
+            <!-- Sección 2: Estructura del Mensaje -->
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">2. Estructura del Mensaje</h2>
+                <div class="bg-gray-100 p-4 rounded-lg mb-4">
+                    <pre class="text-sm"><code>&lt;tipo&gt;(&lt;alcance&gt;): &lt;descripción&gt;
+
+[cuerpo opcional]
+
+[nota de pie opcional]</code></pre>
+                </div>
+
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">2.1 Tipos de Commit</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <span class="font-bold text-blue-700">feat:</span>
+                        <p class="text-gray-700">Nuevas características o funcionalidades</p>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <span class="font-bold text-green-700">fix:</span>
+                        <p class="text-gray-700">Corrección de errores</p>
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-lg">
+                        <span class="font-bold text-yellow-700">docs:</span>
+                        <p class="text-gray-700">Cambios en documentación</p>
+                    </div>
+                    <div class="bg-purple-50 p-4 rounded-lg">
+                        <span class="font-bold text-purple-700">style:</span>
+                        <p class="text-gray-700">Cambios de formato, espaciado, etc.</p>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <span class="font-bold text-red-700">refactor:</span>
+                        <p class="text-gray-700">Refactorización del código</p>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-lg">
+                        <span class="font-bold text-indigo-700">test:</span>
+                        <p class="text-gray-700">Adición o modificación de tests</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 3: Ejemplos -->
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">3. Ejemplos</h2>
+
+                <div class="space-y-4">
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-semibold text-gray-800 mb-2">Feature: Nuevo Proceso en ERP</h4>
+                        <pre class="text-sm"><code>feat(inventory): agregar proceso de inutilización de guías de remisión
+
+- Implementar formulario de inutilización
+- Crear validaciones de estado de guía
+- Agregar registro de auditoría
+- Actualizar menú de navegación en módulo de inventario
+
+Resolves: #789
+Área: Módulo de Inventario
+Impacto: Permite gestionar guías no utilizadas según normativa</code></pre>
+                    </div>
+
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-semibold text-gray-800 mb-2">Feature: Componente Específico</h4>
+                        <pre class="text-sm"><code>feat(inventory/shipment): crear tabla de guías inutilizadas
+
+- Añadir columnas de fecha, motivo y usuario
+- Implementar paginación y filtros
+- Agregar acciones de exportación
+- Integrar con API de consulta
+
+Related to: #790
+Component: RemissionGuideTable</code></pre>
+                    </div>
+
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-semibold text-gray-800 mb-2">Fix: Corrección en Proceso</h4>
+                        <pre class="text-sm"><code>fix(inventory/shipment): corregir validación de guías duplicadas
+
+Se corrigió la validación que permitía inutilizar una guía
+más de una vez. Se agregó verificación en base de datos y
+mensajes de error apropiados.
+
+Fixes: #791
+Impacto: Crítico - Afecta integridad de datos</code></pre>
+                    </div>
+
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-semibold text-gray-800 mb-2">Refactor: Diseño Responsive</h4>
+                        <pre class="text-sm"><code>refactor(pos/ui): adaptar diseño para dispositivos móviles
+
+- Implementar diseño responsive en componente principal
+- Ajustar grid de productos para tablets y móviles
+- Optimizar menú lateral para vista móvil
+- Rediseñar modal de pago para pantallas pequeñas
+
+Devices: Tablets (768px-1024px), Smartphones (<768px)
+Testing: Realizado en iOS y Android
+Related to: #892 - Mejoras UX en POS</code></pre>
+                    </div>
+
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-semibold text-gray-800 mb-2">Refactor: Optimización de Componentes</h4>
+                        <pre class="text-sm"><code>refactor(pos/components): optimizar rendimiento en dispositivos móviles
+
+- Implementar lazy loading para catálogo de productos
+- Reducir tamaño de imágenes para vista móvil
+- Optimizar eventos touch y gestos
+- Mejorar tiempo de carga inicial
+
+Performance: Bundle size reducido en 45%
+Memory Usage: Reducido de 180MB a 95MB en móviles
+Related Components: ProductGrid, PaymentModal, SideMenu</code></pre>
+                    </div>
+
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-semibold text-gray-800 mb-2">Style: Ajustes CSS</h4>
+                        <pre class="text-sm"><code>style(pos): implementar media queries y flexbox
+
+- Agregar breakpoints para diferentes dispositivos
+- Convertir tablas a diseño flexible
+- Ajustar tamaños de fuente y espaciado
+- Implementar grid system responsive
+
+CSS Framework: Tailwind
+Breakpoints: sm(640px), md(768px), lg(1024px)
+Files Modified: pos.css, components/*.css</code></pre>
+                    </div>
+
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-semibold text-gray-800 mb-2">Docs: Actualización de Documentación</h4>
+                        <pre class="text-sm"><code>docs(inventory): actualizar documentación de inutilización de guías
+
+- Agregar diagramas de flujo del proceso
+- Incluir ejemplos de casos de uso
+- Actualizar manual de usuario
+- Documentar APIs relacionadas
+
+Type: Technical Documentation
+Ubicación: /docs/inventory/shipment-guides/</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 4: Buenas Prácticas -->
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">4. Buenas Prácticas</h2>
+
+                <div class="space-y-4">
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white">✓</div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Usa tiempo presente</h4>
+                            <p class="text-gray-700">"add feature" en lugar de "added feature"</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white">✓</div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Sé conciso pero descriptivo</h4>
+                            <p class="text-gray-700">El título no debe exceder 50 caracteres</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white">✓</div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Incluye el contexto necesario</h4>
+                            <p class="text-gray-700">Usa el cuerpo del commit para explicar el "por qué" del cambio</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white">✓</div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Referencias los issues</h4>
+                            <p class="text-gray-700">Incluye "Fixes #123" o "Relates to #456" cuando sea relevante</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 5: Validador de Commits -->
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">5. Validador de Commits</h2>
+
+                <div class="space-y-4">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-semibold mb-2">Escribe tu mensaje de commit:</label>
+                        <textarea id="commitMessage" class="w-full p-3 border rounded-lg" rows="4"></textarea>
+                    </div>
+                    <button onclick="validateCommit()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                        Validar Commit
+                    </button>
+                    <div id="validationResult" class="mt-4"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="mt-12 text-center text-gray-600">
+            <p>© 2025 BorchSolutions. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        function validateCommit() {
+            const commitMessage = document.getElementById('commitMessage').value;
+            const resultDiv = document.getElementById('validationResult');
+
+            // Expresión regular para validar el formato del commit
+            const commitRegex = /^(feat|fix|docs|style|refactor|test|chore)(\([a-z-]+\))?: .{1,50}$/;
+
+            if (!commitMessage) {
+                showResult('Por favor, ingresa un mensaje de commit.', 'warning');
+                return;
+            }
+
+            const firstLine = commitMessage.split('\n')[0];
+
+            if (commitRegex.test(firstLine)) {
+                showResult('¡Formato de commit válido! ✅', 'success');
+            } else {
+                showResult('El formato del commit no cumple con los lineamientos. Revisa la estructura requerida.', 'error');
+            }
+        }
+
+        function showResult(message, type) {
+            const resultDiv = document.getElementById('validationResult');
+            const colors = {
+                success: 'bg-green-100 text-green-700 border-green-200',
+                error: 'bg-red-100 text-red-700 border-red-200',
+                warning: 'bg-yellow-100 text-yellow-700 border-yellow-200'
+            };
+
+            resultDiv.className = `p-4 rounded-lg border ${colors[type]}`;
+            resultDiv.textContent = message;
+        }
+    </script>
+</body>
+
+</html>
